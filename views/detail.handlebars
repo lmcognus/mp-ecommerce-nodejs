@@ -92,6 +92,7 @@
                             </div>
 
                             <form action="/procesar-pago" method="POST">
+                                <input type="hidden" name="url_image" value="{{ img }}">  
                                 <input type="hidden" name="title" value="{{ title }}">
                                 <input type="hidden" name="price" value="{{ price }}">
                                 <input type="hidden" name="unit" value="{{ unit }}">
