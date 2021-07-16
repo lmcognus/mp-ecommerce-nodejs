@@ -65,7 +65,7 @@ app.post("/procesar-pago", function (req, res) {
     payment_methods: {
       excluded_payment_methods: [
         {
-          id: "Amex",
+          id: "amex",
         }
       ],
       excluded_payment_types: [
