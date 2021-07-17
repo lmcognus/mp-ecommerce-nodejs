@@ -76,8 +76,8 @@ app.post("/procesar-pago", function (req, res) {
       }
   },
     back_urls: {
-      //success: "https://sebad95-mp-commerce-nodejs.herokuapp.com/success",
-      success: "http://localhost:3000/success",
+      success: "https://sebad95-mp-commerce-nodejs.herokuapp.com/success",
+      //success: "http://localhost:3000/success",
       failure: "https://sebad95-mp-commerce-nodejs.herokuapp.com/failure",
       pending: "https://sebad95-mp-commerce-nodejs.herokuapp.com/pending",
     },
