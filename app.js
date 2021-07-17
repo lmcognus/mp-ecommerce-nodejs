@@ -37,11 +37,11 @@ app.get("/success", function (req, res) {
 });
 
 app.get("/pending", function (req, res) {
-  res.render("pending");
+  res.render("pending", req.query);
 });
 
 app.get("/failure", function (req, res) {
-  res.render("failure");
+  res.render("failure", req.query);
 });
 
 app.get("/notification-webhook", function (req, res) {
