@@ -44,6 +44,10 @@ app.get("/failure", function (req, res) {
   res.render("failure");
 });
 
+app.get("/notificarion-webhook", function (req, res) {
+  
+});
+
 app.post("/procesar-pago", function (req, res) {
   // Crea un objeto de preferencia
   let preference = {
@@ -74,7 +78,8 @@ app.post("/procesar-pago", function (req, res) {
         },
       ],
       installments: 6,
-    }
+    },
+    notification_url:"https://sebad95-mp-commerce-nodejs.herokuapp.com/notification-webhook",
   };
 
   mercadopago.preferences
