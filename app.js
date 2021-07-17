@@ -44,7 +44,7 @@ app.get("/failure", function (req, res) {
   res.render("failure");
 });
 
-app.get("/notificarion-webhook", function (req, res) {
+app.get("/notification-webhook", function (req, res) {
   
 });
 
