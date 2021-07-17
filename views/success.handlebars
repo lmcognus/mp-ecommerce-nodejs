@@ -1,4 +1,24 @@
+<style>
+    div {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        margin-top: 60px;
+    }
+
+    i{
+        font-size: 5em;
+        color: #009000
+    }
+</style>
 <div>
-    <i class="fas fa-check-circle"></i>
-    <label>Id transacción: <span>{{ collection_id }}</span></label>
+    <i class="fas fa-check-circle"></i><br>
+    <label>ID de pago: <span>{{ collection_id }}</span></label><br>
+    <label>Método de pago: <span>{{ payment_type }}</span></label><br>
+    <label>Referencia externa: <span>{{ external_reference }}</span></label><br>
+    <label>Estado: <span>{{ status }}</span></label><br>
+    <label>ID de preferencia: <span>{{ preference_id }}</span></label><br>
+    <label>ID de order: <span>{{ merchant_order_id }}</span></label><br>
+    <label>ID de sitio: <span>{{ site_id }}</span></label>
 </div>
