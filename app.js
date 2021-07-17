@@ -33,7 +33,7 @@ app.get("/detail", function (req, res) {
 });
 
 app.get("/success", function (req, res) {
-  res.render("success");
+  res.render("success", req.query);
 });
 
 app.get("/pending", function (req, res) {
@@ -76,7 +76,8 @@ app.post("/procesar-pago", function (req, res) {
       }
   },
     back_urls: {
-      success: "https://sebad95-mp-commerce-nodejs.herokuapp.com/success",
+      //success: "https://sebad95-mp-commerce-nodejs.herokuapp.com/success",
+      success: "http://localhost:3000/success",
       failure: "https://sebad95-mp-commerce-nodejs.herokuapp.com/failure",
       pending: "https://sebad95-mp-commerce-nodejs.herokuapp.com/pending",
     },
