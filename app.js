@@ -53,13 +53,28 @@ app.post("/procesar-pago", function (req, res) {
   let preference = {
     items: [
       {
+        id: 1234,
         title: req.body.title,
-        unit_price: parseInt(req.body.price),
-        quantity: parseInt(req.body.unit),
+        picture_url: req.body.url_image,
         description: "Dispositivo móvil de Tienda e-commerce",
-        url_image: req.body.url_image
+        quantity: parseInt(req.body.unit),
+        unit_price: parseInt(req.body.price)
       },
     ],
+    payer: {
+      name: "Lalo",
+      surname: "Landa",
+      email: "test_user__63274575@testuser.com",
+      phone: {
+          area_code: "11",
+          number: 22223333
+      },
+      address: {
+          street_name: "Falsa",
+          street_number: 123,
+          zip_code: "1111"
+      }
+  },
     back_urls: {
       success: "https://sebad95-mp-commerce-nodejs.herokuapp.com/success",
       failure: "https://sebad95-mp-commerce-nodejs.herokuapp.com/failure",
@@ -79,7 +94,9 @@ app.post("/procesar-pago", function (req, res) {
       ],
       installments: 6,
     },
-    notification_url:"https://sebad95-mp-commerce-nodejs.herokuapp.com/notification-webhook",
+    notification_url:"https://sebad95-mp-commerce-nodejs.herokuapp.com/notification-webhook/?source_news=webhooks",
+    statement_descriptor: "Tienda e-commerce",
+    external_reference: "sebadiaz95@hotmail.com"
   };
 
   mercadopago.preferences
