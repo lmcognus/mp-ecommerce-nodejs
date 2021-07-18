@@ -34,6 +34,7 @@ app.get("/detail", function (req, res) {
 });
 
 app.get("/success", function (req, res) {
+  console.log(req.body);
   res.render("success", req.query);
 });
 
