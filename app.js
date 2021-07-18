@@ -47,16 +47,8 @@ app.get("/failure", function (req, res) {
 
 app.post("/notification-webhook", function (req, res) {
   if (req.method === "POST") { 
-    let body = ""; 
-    req.on("data", chunk => {  
-      body += chunk.toString();
-      req.write(body);
-    });
-    req.on("end", () => {  
-      console.log(body, "webhook response"); 
-      req.write(body);
-      res.end("ok");
-    });
+    var events = req.body;
+    console.log(events);
   }
   return res.status(200); 
 });
