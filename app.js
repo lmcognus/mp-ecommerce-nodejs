@@ -47,7 +47,7 @@ app.get("/failure", function (req, res) {
 app.post("/notification-webhook", function (req, res) {
   
   const webhookUrl = req.params.url;
-  res.status(200).send('OK')
+  res.status(200).send(req.query)
 });
 
 // app.get("/notification-webhook", function (req, res) {
