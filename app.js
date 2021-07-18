@@ -45,8 +45,8 @@ app.get("/failure", function (req, res) {
 });
 
 app.post("/notification-webhook", function (req, res) {
-  let body = req.body
-  res.render("webhook", body);
+  console.log(req.body)
+  res.status(200).end()
 });
 
 // app.get("/notification-webhook", function (req, res) {
@@ -82,7 +82,6 @@ app.post("/procesar-pago", function (req, res) {
   },
     back_urls: {
       success: "https://sebad95-mp-commerce-nodejs.herokuapp.com/success",
-      //success: "http://localhost:3000/success",
       failure: "https://sebad95-mp-commerce-nodejs.herokuapp.com/failure",
       pending: "https://sebad95-mp-commerce-nodejs.herokuapp.com/pending",
     },
@@ -102,7 +101,6 @@ app.post("/procesar-pago", function (req, res) {
       default_installments: 1
     },
     notification_url:"https://sebad95-mp-commerce-nodejs.herokuapp.com/notification-webhook",
-    //notification_url:"http://localhost:3000/notification-webhook",
     statement_descriptor: "Tienda e-commerce",
     external_reference: "sebadiaz95@hotmail.com"
   };
@@ -110,7 +108,6 @@ app.post("/procesar-pago", function (req, res) {
   mercadopago.preferences
     .create(preference)
     .then(function (response) {
-      //console.log(response.body);
       res.redirect(response.body.init_point);
     })
     .catch(function (error) {
