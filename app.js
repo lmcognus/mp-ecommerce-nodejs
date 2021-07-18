@@ -45,9 +45,8 @@ app.get("/failure", function (req, res) {
 });
 
 app.post("/notification-webhook", function (req, res) {
-  
-  const webhookUrl = req.params.url;
-  res.status(200).send(req.query)
+  let body = req.body
+  res.render("webhook", body);
 });
 
 // app.get("/notification-webhook", function (req, res) {
@@ -102,7 +101,8 @@ app.post("/procesar-pago", function (req, res) {
       installments: 6,
       default_installments: 1
     },
-    notification_url:"https://sebad95-mp-commerce-nodejs.herokuapp.com/notification-webhook?source_news=webhooks",
+    notification_url:"https://sebad95-mp-commerce-nodejs.herokuapp.com/notification-webhook",
+    //notification_url:"http://localhost:3000/notification-webhook",
     statement_descriptor: "Tienda e-commerce",
     external_reference: "sebadiaz95@hotmail.com"
   };
