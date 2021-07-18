@@ -66,7 +66,7 @@ app.post("/procesar-pago", function (req, res) {
       {
         id: 1234,
         title: req.body.title,
-        picture_url: req.body.url_image,
+        picture_url: "https://www.mercadopago.com/org-img/MP3/home/logomp3.gif",
         description: "Dispositivo móvil de Tienda e-commerce",
         quantity: parseInt(req.body.unit),
         unit_price: parseInt(req.body.price)
