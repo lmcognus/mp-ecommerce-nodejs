@@ -94,8 +94,9 @@ app.post("/procesar-pago", function (req, res) {
         },
       ],
       installments: 6,
+      default_installments: 1
     },
-    notification_url:"https://sebad95-mp-commerce-nodejs.herokuapp.com/notification-webhook/?source_news=webhooks",
+    notification_url:"https://sebad95-mp-commerce-nodejs.herokuapp.com/notification-webhook?source_news=webhooks",
     statement_descriptor: "Tienda e-commerce",
     external_reference: "sebadiaz95@hotmail.com"
   };
