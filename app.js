@@ -50,9 +50,11 @@ app.post("/notification-webhook", function (req, res) {
     let body = ""; 
     req.on("data", chunk => {  
       body += chunk.toString();
+      req.write(body);
     });
     req.on("end", () => {  
       console.log(body, "webhook response"); 
+      req.write(body);
       res.end("ok");
     });
   }
@@ -106,7 +108,7 @@ app.post("/procesar-pago", function (req, res) {
       installments: 6,
       default_installments: 6
     },
-    notification_url:"https://hookb.in/LggNrjpjOMh18Vqq8xBE",
+    notification_url:"https://sebad95-mp-commerce-nodejs.herokuapp.com/notification-webhook",
     statement_descriptor: "Tienda e-commerce",
     external_reference: "sebadiaz95@hotmail.com"
   };
