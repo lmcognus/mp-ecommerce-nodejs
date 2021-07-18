@@ -44,8 +44,8 @@ app.get("/failure", function (req, res) {
   res.render("failure", req.query);
 });
 
-app.get("/notification-webhook", function (req, res) {
-  
+app.post("/notification-webhook", function (req, res) {
+  console.log(req)
 });
 
 app.post("/procesar-pago", function (req, res) {
@@ -64,7 +64,7 @@ app.post("/procesar-pago", function (req, res) {
     payer: {
       name: "Lalo",
       surname: "Landa",
-      email: "test_user__63274575@testuser.com",
+      email: "test_user_63274575@testuser.com",
       phone: {
           area_code: "11",
           number: 22223333
