@@ -34,7 +34,6 @@ app.get("/detail", function (req, res) {
 });
 
 app.get("/success", function (req, res) {
-  console.log(req.body);
   res.render("success", req.query);
 });
 
@@ -48,8 +47,14 @@ app.get("/failure", function (req, res) {
 
 app.post("/notification-webhook", function (req, res) {
   if (req.method === "POST") { 
-    var events = req.body;
-    console.log(events);
+    let body = ""; 
+    req.on("data", chunk => {  
+      body += chunk.toString();
+    });
+    req.on("end", () => {  
+      console.log(body, "webhook response"); 
+      res.end("ok");
+    });
   }
   return res.status(200); 
 });
