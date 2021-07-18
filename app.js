@@ -6,6 +6,7 @@ var app = express();
 
 // SDK de Mercado Pago
 const mercadopago = require("mercadopago");
+
 const bodyParser = require("body-parser");
 
 app.use(bodyParser.urlencoded({ extended: false }));
@@ -45,13 +46,18 @@ app.get("/failure", function (req, res) {
 });
 
 app.post("/notification-webhook", function (req, res) {
-  console.log(req.body)
-  res.status(200).end()
+  if (req.method === "POST") { 
+    let body = ""; 
+    req.on("data", chunk => {  
+      body += chunk.toString();
+    });
+    req.on("end", () => {  
+      console.log(body, "webhook response"); 
+      res.end("ok");
+    });
+  }
+  return res.status(200); 
 });
-
-// app.get("/notification-webhook", function (req, res) {
-//   console.log(req)
-// });
 
 app.post("/procesar-pago", function (req, res) {
   // Crea un objeto de preferencia
@@ -98,7 +104,7 @@ app.post("/procesar-pago", function (req, res) {
         },
       ],
       installments: 6,
-      default_installments: 1
+      default_installments: 6
     },
     notification_url:"https://sebad95-mp-commerce-nodejs.herokuapp.com/notification-webhook",
     statement_descriptor: "Tienda e-commerce",
