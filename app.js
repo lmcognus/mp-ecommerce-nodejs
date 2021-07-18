@@ -45,12 +45,14 @@ app.get("/failure", function (req, res) {
 });
 
 app.post("/notification-webhook", function (req, res) {
-  console.log(req)
+  
+  const webhookUrl = req.params.url;
+  res.status(200).send('OK')
 });
 
-app.get("/notification-webhook", function (req, res) {
-  console.log(req)
-});
+// app.get("/notification-webhook", function (req, res) {
+//   console.log(req)
+// });
 
 app.post("/procesar-pago", function (req, res) {
   // Crea un objeto de preferencia
