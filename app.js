@@ -53,7 +53,7 @@ app.post("/notification-webhook", function (req, res) {
     });
     req.on("end", () => {  
       console.log(body, "webhook response"); 
-      res.end(req.query);
+      res.end(JSON(req.query));
     });
   }
   return res.status(200); 
