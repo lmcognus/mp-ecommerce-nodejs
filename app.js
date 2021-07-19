@@ -9,8 +9,6 @@ const mercadopago = require("mercadopago");
 
 const bodyParser = require("body-parser");
 
-const axios = require('axios');
-
 app.use(bodyParser.urlencoded({ extended: false }));
 
 // Agrega credenciales
@@ -48,22 +46,17 @@ app.get("/failure", function (req, res) {
 });
 
 app.post("/notification-webhook", function (req, res) {
-  if (req.method === "POST") {
-    if (req.body.action === "payment.created") {
-      async () => {
-        const payment = await axios.get(
-          `https://api.mercadopago.com/v1/payments/${req.body.data.id}`,
-          {
-            headers: {
-              Authorization: `Bearer APP_USR-8729976997648654-071617-f4675b47bc4402f060cc533a54a3a43d-792288000`,
-            },
-          }
-        );
-        console.log("Payment information: ", payment);
-      };
-    }
+  if (req.method === "POST") { 
+    let body = ""; 
+    req.on("data", chunk => {  
+      body += chunk.toString();
+    });
+    req.on("end", () => {  
+      console.log(body, "webhook response"); 
+      res.end("ok");
+    });
   }
-  return res.status(200);
+  return res.status(200); 
 });
 
 app.post("/procesar-pago", function (req, res) {
@@ -76,7 +69,7 @@ app.post("/procesar-pago", function (req, res) {
         picture_url: "https://www.mercadopago.com/org-img/MP3/home/logomp3.gif",
         description: "Dispositivo móvil de Tienda e-commerce",
         quantity: parseInt(req.body.unit),
-        unit_price: parseInt(req.body.price),
+        unit_price: parseInt(req.body.price)
       },
     ],
     payer: {
@@ -84,15 +77,15 @@ app.post("/procesar-pago", function (req, res) {
       surname: "Landa",
       email: "test_user_63274575@testuser.com",
       phone: {
-        area_code: "11",
-        number: 22223333,
+          area_code: "11",
+          number: 22223333
       },
       address: {
-        street_name: "Falsa",
-        street_number: 123,
-        zip_code: "1111",
-      },
-    },
+          street_name: "Falsa",
+          street_number: 123,
+          zip_code: "1111"
+      }
+  },
     back_urls: {
       success: "https://sebad95-mp-commerce-nodejs.herokuapp.com/success",
       failure: "https://sebad95-mp-commerce-nodejs.herokuapp.com/failure",
@@ -103,7 +96,7 @@ app.post("/procesar-pago", function (req, res) {
       excluded_payment_methods: [
         {
           id: "amex",
-        },
+        }
       ],
       excluded_payment_types: [
         {
@@ -111,12 +104,11 @@ app.post("/procesar-pago", function (req, res) {
         },
       ],
       installments: 6,
-      default_installments: 6,
+      default_installments: 6
     },
-    notification_url:
-      "https://sebad95-mp-commerce-nodejs.herokuapp.com/notification-webhook",
+    notification_url:"https://sebad95-mp-commerce-nodejs.herokuapp.com/notification-webhook",
     statement_descriptor: "Tienda e-commerce",
-    external_reference: "sebadiaz95@hotmail.com",
+    external_reference: "sebadiaz95@hotmail.com"
   };
 
   mercadopago.preferences
