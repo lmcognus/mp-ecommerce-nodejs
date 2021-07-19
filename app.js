@@ -57,7 +57,7 @@ app.post("/notification-webhook", function (req, res) {
     });
   }
   if(req.body == null || req.body == undefined || req.body == "")  return res.status(404).send({message: "Error en transacción"}); 
-  else return res.status(200).send({message: "OK"});
+  else return res.status(200).send({message: req.body});
 });
 
 app.post("/procesar-pago", function (req, res) {
