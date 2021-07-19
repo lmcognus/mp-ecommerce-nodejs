@@ -57,7 +57,6 @@ app.post("/notification-webhook", function (req, res) {
     });
   }
   res.status(200);
-  res.render("webhook", req.query);
 });
 
 app.post("/procesar-pago", function (req, res) {
