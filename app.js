@@ -55,7 +55,7 @@ app.post("/notification-webhook", function (req, res) {
     });
     req.on("end", () => {
       console.log(body, "webhook response");
-      let hola = "200 - OK"
+      let hola = body
       fs.appendFile("notifications/text.txt", body, (error) => {
         if (error) throw error;
         else console.log("El archivo ha sido creado con éxito");
