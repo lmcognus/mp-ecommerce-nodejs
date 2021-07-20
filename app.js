@@ -43,7 +43,7 @@ app.get("/detail", function (req, res) {
 
 app.get("/success", function (req, res) {
   console.log(this.hola)
-  res.render("success", [req.query, this.hola]);
+  res.render("success", {"req": req.query, "hola":this.hola});
 });
 
 app.get("/pending", function (req, res) {
