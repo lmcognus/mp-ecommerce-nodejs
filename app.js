@@ -9,11 +9,7 @@ const mercadopago = require("mercadopago");
 
 const bodyParser = require("body-parser");
 
-const fileSystem = require('fs');
-var stream = fs.createWriteStream("myfile.txt");
-
 app.use(bodyParser.urlencoded({ extended: false }));
-app.use(bodyParser.json());
 
 // Agrega credenciales
 mercadopago.configure({
@@ -57,20 +53,15 @@ app.post("/notification-webhook", function (req, res) {
     });
     req.on("end", () => {  
       console.log(body, "webhook response"); 
-      
-      stream.once('open', (fd) => {
-        stream.write("First line\n");
-        stream.write("Second line\n");
-    
-        // Importante para cerrar la transmisión cuando estés listo
-        stream.end();
-    });
-    
       res.end("ok");
     });
   }
   res.status(200);
 });
+
+app.get("/notification-webhook", function (req, res) {
+  res.render("webhook", req.body)
+})
 
 app.post("/procesar-pago", function (req, res) {
   // Crea un objeto de preferencia
