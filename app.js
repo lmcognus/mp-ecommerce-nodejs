@@ -54,11 +54,14 @@ app.post("/notification-webhook", function (req, res) {
     req.on("end", () => {  
       console.log(body, "webhook response"); 
       res.end("ok");
-      res.render("webhook", body);
     });
   }
   res.status(200);
 });
+
+app.get("/notification-webhook", function (req, res) {
+  res.render("webhook", req.query)
+})
 
 app.post("/procesar-pago", function (req, res) {
   // Crea un objeto de preferencia
