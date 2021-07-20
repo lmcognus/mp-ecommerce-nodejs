@@ -55,11 +55,12 @@ app.post("/notification-webhook", function (req, res) {
     });
     req.on("end", () => {
       console.log(body, "webhook response");
+      let hola = "200 - OK"
       fs.appendFile("notifications/text.txt", body, (error) => {
         if (error) throw error;
         else console.log("El archivo ha sido creado con éxito");
       });
-      res.end("ok");
+      res.end(hola);
     });
   }
   res.status(200);
