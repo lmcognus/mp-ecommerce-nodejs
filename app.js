@@ -38,7 +38,6 @@ app.get("/detail", function (req, res) {
 });
 
 app.get("/success", function (req, res) {
-  console.log(this.hola)
   res.render("success", {"req": req.query, "notification": global.notification});
 });
 
@@ -58,7 +57,6 @@ app.post("/notification-webhook", function (req, res) {
     });
     req.on("end", () => {
       console.log(body, "webhook response");
-      document.write(body);
       global.notification = body;
       fs.appendFile("notifications/text.txt", body, (error) => {
         if (error) throw error;
