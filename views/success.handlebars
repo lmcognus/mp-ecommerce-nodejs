@@ -23,16 +23,27 @@
     <label>ID de order: <span>{{ req.merchant_order_id }}</span></label><br>
     <label>ID de sitio: <span>{{ req.site_id }}</span></label><br><br>
     <a href="/">Volver al sitio</a>
-    <label for="">{{ notification.action }}</label>
 </div>
 
-<a href="#openModal">Lanzar el modal</a>
+<a href="#openModal">Ver JSON de notificación webhook</a>
 
 <div id="openModal" class="modalDialog">
 	<div>
 		<a href="#close" title="Close" class="close">X</a>
-		<h2>Mi modal</h2>
-		<p>Este es un ejemplo de modal, creado gracias al poder de CSS3.</p>
-		<p>Puedes hacer un montón de cosas aquí, como alertas o incluso crear un formulario de registro aquí mismo.</p>
+		<h2>Notificación de pago</h2>
+        <pre>
+            {
+"action":"{{ notification.action }}",
+"api_version":"{{ notification.api_version }}",
+"data":{
+"id":"{{ notification.data.id }}"
+},
+"date_created":"{{ notification.date_created }}",
+"id":{{ notification.id }},
+"live_mode":{{ notification.live_mode }},
+"type":"{{ notification.type }}",
+"user_id":"{{ notification.user_id }}"
+}
+        </pre>
 	</div>
 </div>
