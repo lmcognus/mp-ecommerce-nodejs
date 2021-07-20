@@ -51,19 +51,19 @@ app.get("/failure", function (req, res) {
 
 app.post("/notification-webhook", function (req, res) {
   if (req.method === "POST") {
-    // let body = "";
-    // req.on("data", (chunk) => {
-    //   body += chunk.toString();
-    // });
-    // req.on("end", () => {
-    //   console.log(body, "webhook response");
-    global.notification = JSON.stringify(req.body);
-    //   fs.appendFile("notifications/text.txt", body, (error) => {
-    //     if (error) throw error;
-    //     else console.log("El archivo ha sido creado con éxito");
-    //   });
-    //   res.end("OK");
-    // });
+    let body = "";
+    req.on("data", (chunk) => {
+      body += chunk.toString();
+    });
+    req.on("end", () => {
+      console.log(body, "webhook response");
+      global.notification = JSON.parse(body);
+      fs.appendFile("notifications/text.txt", body, (error) => {
+        if (error) throw error;
+        else console.log("El archivo ha sido creado con éxito");
+      });
+      res.end("OK");
+    });
   }
   res.status(200);
 });
