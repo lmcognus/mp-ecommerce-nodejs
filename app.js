@@ -34,7 +34,7 @@ app.get("/", function (req, res) {
 });
 
 app.get("/detail", function (req, res) {
-  res.render("detail", req.query, {name: 'item'});
+  res.render("detail", {"req": req.query, name: 'item'});
 });
 
 app.get("/success", function (req, res) {
