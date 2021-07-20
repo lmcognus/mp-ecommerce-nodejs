@@ -30,23 +30,23 @@ app.use(express.static("assets"));
 app.use("/assets", express.static(__dirname + "/assets"));
 
 app.get("/", function (req, res) {
-  res.render("home");
+  res.render("home", {"name": 'home'});
 });
 
 app.get("/detail", function (req, res) {
-  res.render("detail", {"req": req.query, name: 'item'});
+  res.render("detail", {"req": req.query, "name": 'item'});
 });
 
 app.get("/success", function (req, res) {
-  res.render("success", {"req": req.query, "notification": global.notification});
+  res.render("success", {"req": req.query, "notification": global.notification, "name": ''});
 });
 
 app.get("/pending", function (req, res) {
-  res.render("pending", {"req": req.query, "notification": global.notification});
+  res.render("pending", {"req": req.query, "notification": global.notification, "name": ''});
 });
 
 app.get("/failure", function (req, res) {
-  res.render("failure", req.query);
+  res.render("failure", {"req": req.query, "name": ''});
 });
 
 app.post("/notification-webhook", function (req, res) {

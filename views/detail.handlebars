@@ -60,7 +60,7 @@
                                             <div class=""></div>
                                             <img src="./assets/003.jpg" class="ir ir item-image as-producttile-image"
                                                 alt="" width="445" height="445"
-                                                style="content:-webkit-image-set(url({{ img }}) 2x);">
+                                                style="content:-webkit-image-set(url({{ req.img }}) 2x);">
                                         </div>
 
                                     </div>
@@ -78,23 +78,23 @@
                                 <div class="as-producttile-title">
                                     <h3 class="as-producttile-name">
                                         <p class="as-producttile-tilelink">
-                                            <span data-ase-truncate="2"> {{ title }} </span>
+                                            <span data-ase-truncate="2"> {{ req.title }} </span>
                                         </p>
 
                                     </h3>
                                 </div>
                                 <h3>
-                                   {{ price }}
+                                   {{ req.price }}
                                 </h3>
                                 <h3>
-                                    {{ unit }}
+                                    {{ req.unit }}
                                 </h3>
                             </div>
                             <form action="/procesar-pago" method="POST">
-                                <input type="hidden" name="url_image" value="{{ img }}">  
-                                <input type="hidden" name="title" value="{{ title }}">
-                                <input type="hidden" name="price" value="{{ price }}">
-                                <input type="hidden" name="unit" value="{{ unit }}">
+                                <input type="hidden" name="url_image" value="{{ req.img }}">  
+                                <input type="hidden" name="title" value="{{ req.title }}">
+                                <input type="hidden" name="price" value="{{ req.price }}">
+                                <input type="hidden" name="unit" value="{{ req.unit }}">
                                 <button type="submit" class="mercadopago-button">Pagar la compra</button>
                             </form>
                         </div>
