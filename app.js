@@ -4,6 +4,8 @@ var port = process.env.PORT || 3000;
 
 var app = express();
 
+var hola;
+
 // SDK de Mercado Pago
 const mercadopago = require("mercadopago");
 
@@ -19,6 +21,10 @@ mercadopago.configure({
     "APP_USR-8729976997648654-071617-f4675b47bc4402f060cc533a54a3a43d-792288000",
   integrator_id: "dev_24c65fb163bf11ea96500242ac130004",
 });
+
+function postWebHook(body){
+    return body;
+}
 
 app.engine("handlebars", exphbs());
 app.set("view engine", "handlebars");
@@ -36,7 +42,8 @@ app.get("/detail", function (req, res) {
 });
 
 app.get("/success", function (req, res) {
-  res.render("success", req.query);
+  console.log(this.hola)
+  res.render("success", [req.query, this.hola]);
 });
 
 app.get("/pending", function (req, res) {
@@ -55,12 +62,12 @@ app.post("/notification-webhook", function (req, res) {
     });
     req.on("end", () => {
       console.log(body, "webhook response");
-      let hola = body
+      this.hola = postWebHook(body);
       fs.appendFile("notifications/text.txt", body, (error) => {
         if (error) throw error;
         else console.log("El archivo ha sido creado con éxito");
       });
-      res.end(hola);
+      res.end("OK");
     });
   }
   res.status(200);
