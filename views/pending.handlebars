@@ -15,12 +15,35 @@
 <div>
     <i class="fas fa-minus-circle"></i><br>
     <label>PAGO PENDIENTE</label><br>
-    <label>ID de pago: <span>{{ collection_id }}</span></label><br>
-    <label>Método de pago: <span>{{ payment_type }}</span></label><br>
-    <label>Referencia externa: <span>{{ external_reference }}</span></label><br>
-    <label>Estado: <span>{{ status }}</span></label><br>
-    <label>ID de preferencia: <span>{{ preference_id }}</span></label><br>
-    <label>ID de order: <span>{{ merchant_order_id }}</span></label><br>
-    <label>ID de sitio: <span>{{ site_id }}</span></label><br><br>
+    <label>ID de pago: <span>{{ req.collection_id }}</span></label><br>
+    <label>Método de pago: <span>{{ req.payment_type }}</span></label><br>
+    <label>Referencia externa: <span>{{ req.external_reference }}</span></label><br>
+    <label>Estado: <span>{{ req.status }}</span></label><br>
+    <label>ID de preferencia: <span>{{ req.preference_id }}</span></label><br>
+    <label>ID de order: <span>{{ req.merchant_order_id }}</span></label><br>
+    <label>ID de sitio: <span>{{ req.site_id }}</span></label><br><br>
     <a href="/">Volver al sitio</a>
+</div>
+
+<a href="#openModal">Ver JSON de notificación webhook</a>
+
+<div id="openModal" class="modalDialog">
+	<div>
+		<a href="#close" title="Close" class="close">X</a>
+		<h2>Notificación de pago</h2>
+        <pre>
+{
+    "action":"{{ notification.action }}",
+    "api_version":"{{ notification.api_version }}",
+    "data":{
+        "id":"{{ notification.data.id }}"
+    },
+    "date_created":"{{ notification.date_created }}",
+    "id":{{ notification.id }},
+    "live_mode":{{ notification.live_mode }},
+    "type":"{{ notification.type }}",
+    "user_id":"{{ notification.user_id }}"
+}
+        </pre>
+	</div>
 </div>

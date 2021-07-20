@@ -42,7 +42,7 @@ app.get("/success", function (req, res) {
 });
 
 app.get("/pending", function (req, res) {
-  res.render("pending", req.query);
+  res.render("pending", {"req": req.query, "notification": global.notification});
 });
 
 app.get("/failure", function (req, res) {
