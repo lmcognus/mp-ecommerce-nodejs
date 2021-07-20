@@ -22,10 +22,6 @@ mercadopago.configure({
   integrator_id: "dev_24c65fb163bf11ea96500242ac130004",
 });
 
-function postWebHook(body){
-    global.notification = body;
-}
-
 app.engine("handlebars", exphbs());
 app.set("view engine", "handlebars");
 
@@ -62,7 +58,7 @@ app.post("/notification-webhook", function (req, res) {
     });
     req.on("end", () => {
       console.log(body, "webhook response");
-      postWebHook(body);
+      global.notification = body;
       fs.appendFile("notifications/text.txt", body, (error) => {
         if (error) throw error;
         else console.log("El archivo ha sido creado con éxito");
