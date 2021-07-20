@@ -11,8 +11,6 @@ const mercadopago = require("mercadopago");
 
 const bodyParser = require("body-parser");
 
-const fs = require("fs");
-
 app.use(bodyParser.urlencoded({ extended: false }));
 
 // Agrega credenciales
