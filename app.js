@@ -57,7 +57,7 @@ app.post("/notification-webhook", function (req, res) {
     // });
     // req.on("end", () => {
     //   console.log(body, "webhook response");
-    global.notification = req.body;
+    global.notification = JSON.stringify(req.body);
     //   fs.appendFile("notifications/text.txt", body, (error) => {
     //     if (error) throw error;
     //     else console.log("El archivo ha sido creado con éxito");
