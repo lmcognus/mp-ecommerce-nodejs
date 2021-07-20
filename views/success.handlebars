@@ -16,12 +16,12 @@
     <i class="fas fa-check-circle"></i><br>
     <label>PAGO APROBADO</label><br>
     <label>ID de pago: <span>{{ req.collection_id }}</span></label><br>
-    <label>Método de pago: <span>{{ payment_type }}</span></label><br>
-    <label>Referencia externa: <span>{{ external_reference }}</span></label><br>
-    <label>Estado: <span>{{ status }}</span></label><br>
-    <label>ID de preferencia: <span>{{ preference_id }}</span></label><br>
-    <label>ID de order: <span>{{ merchant_order_id }}</span></label><br>
-    <label>ID de sitio: <span>{{ site_id }}</span></label><br><br>
+    <label>Método de pago: <span>{{ req.payment_type }}</span></label><br>
+    <label>Referencia externa: <span>{{ req.external_reference }}</span></label><br>
+    <label>Estado: <span>{{ req.status }}</span></label><br>
+    <label>ID de preferencia: <span>{{ req.preference_id }}</span></label><br>
+    <label>ID de order: <span>{{ req.merchant_order_id }}</span></label><br>
+    <label>ID de sitio: <span>{{ req.site_id }}</span></label><br><br>
     <a href="/">Volver al sitio</a>
     <label for="">{{ hola }}</label>
 </div>
