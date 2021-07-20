@@ -55,7 +55,6 @@ app.post("/notification-webhook", function (req, res) {
     });
     req.on("end", () => {
       console.log(body, "webhook response");
-      localStorage.setItem('nombre','Chris');
       fs.appendFile("notifications/text.txt", body, (error) => {
         if (error) throw error;
         else console.log("El archivo ha sido creado con éxito");
