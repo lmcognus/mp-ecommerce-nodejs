@@ -18,7 +18,7 @@ app.use(bodyParser.urlencoded({ extended: false }));
 // Agrega credenciales
 mercadopago.configure({
   access_token:
-    "APP_USR-8729976997648654-071617-f4675b47bc4402f060cc533a54a3a43d-792288000",
+    "APP_USR-6317427424180639-042414-47e969706991d3a442922b0702a0da44-469485398",
   integrator_id: "dev_24c65fb163bf11ea96500242ac130004",
 });
 
