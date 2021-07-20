@@ -4,7 +4,7 @@ var port = process.env.PORT || 3000;
 
 var app = express();
 
-var hola;
+global.notification = "";
 
 // SDK de Mercado Pago
 const mercadopago = require("mercadopago");
@@ -43,7 +43,7 @@ app.get("/detail", function (req, res) {
 
 app.get("/success", function (req, res) {
   console.log(this.hola)
-  res.render("success", {"req": req.query, "hola":this.hola});
+  res.render("success", {"req": req.query, "notification": globalThis.notification});
 });
 
 app.get("/pending", function (req, res) {
@@ -62,7 +62,7 @@ app.post("/notification-webhook", function (req, res) {
     });
     req.on("end", () => {
       console.log(body, "webhook response");
-      this.hola = postWebHook(body);
+      globalThis.notification = postWebHook(body);
       fs.appendFile("notifications/text.txt", body, (error) => {
         if (error) throw error;
         else console.log("El archivo ha sido creado con éxito");
