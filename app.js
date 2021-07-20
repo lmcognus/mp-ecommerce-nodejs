@@ -60,7 +60,7 @@ app.post("/notification-webhook", function (req, res) {
 });
 
 app.get("/notification-webhook", function (req, res) {
-  res.render("webhook", req.query)
+  res.render("webhook", req.body)
 })
 
 app.post("/procesar-pago", function (req, res) {
