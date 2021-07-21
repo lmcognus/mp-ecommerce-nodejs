@@ -8,13 +8,12 @@
     }
 
     i{
-        font-size: 5em;
+        font-size: 4em;
         color: #900000
     }
 </style>
 <div>
-    <i class="fas fa-times-circle"></i><br>
-    <label>PAGO RECHAZADO</label><br>
+    <label>SU PAGO SE RECHAZO</label><br>
     <label>ID de pago: <span>{{ req.collection_id }}</span></label><br>
     <label>Método de pago: <span>{{ req.payment_type }}</span></label><br>
     <label>Referencia externa: <span>{{ req.external_reference }}</span></label><br>
@@ -22,5 +21,5 @@
     <label>ID de preferencia: <span>{{ req.preference_id }}</span></label><br>
     <label>ID de order: <span>{{ req.merchant_order_id }}</span></label><br>
     <label>ID de sitio: <span>{{ req.site_id }}</span></label><br><br>
-    <a href="/">Volver al sitio</a>
+    <a href="/">Volver</a>
 </div>

@@ -91,9 +91,9 @@ app.post("/procesar-pago", function (req, res) {
       },
     },
     back_urls: {
-      success: "https://sebad95-mp-commerce-nodejs.herokuapp.com/success",
-      failure: "https://sebad95-mp-commerce-nodejs.herokuapp.com/failure",
-      pending: "https://sebad95-mp-commerce-nodejs.herokuapp.com/pending",
+      success: "https://lmontelongo-mp-ecommerce-node.herokuapp.com/success",
+      failure: "https://lmontelongo-mp-ecommerce-node.herokuapp.com/failure",
+      pending: "https://lmontelongo-mp-ecommerce-node.herokuapp.com/pending",
     },
     auto_return: "approved",
     payment_methods: {
@@ -111,9 +111,9 @@ app.post("/procesar-pago", function (req, res) {
       default_installments: 1,
     },
     notification_url:
-      "https://sebad95-mp-commerce-nodejs.herokuapp.com/notification-webhook?source_news=webhooks",
+      "https://lmontelongo-mp-ecommerce-node.herokuapp.com/notification-webhook?source_news=webhooks",
     statement_descriptor: "Tienda e-commerce",
-    external_reference: "sebadiaz95@hotmail.com",
+    external_reference: "lucasmontelongo@outlook.com",
   };
 
   mercadopago.preferences
